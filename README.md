@@ -11,7 +11,7 @@
 Run the following command on your client machine (`node2`):
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "vagrant@node2"
+ssh-keygen -t rsa -b 4096 -C "vagrant@<your-master-node-ip>"
 ````
 
 * Press **Enter** to accept the default file location (`/home/vagrant/.ssh/id_rsa`)
@@ -28,7 +28,7 @@ ssh-keygen -t rsa -b 4096 -C "vagrant@node2"
 Use the built-in tool to copy the public key for passwordless login:
 
 ```bash
-ssh-copy-id vagrant@192.168.56.12
+ssh-copy-id vagrant@<your-master-node-ip>
 ```
 
 ### Possible Issue:
@@ -76,7 +76,7 @@ cat ~/.ssh/id_rsa.pub
 
 Copy the entire output.
 
-### 4.2 On the remote server (`192.168.56.12`), prepare SSH directory:
+### 4.2 On the remote server / worker node (`192.168.56.12`), prepare SSH directory:
 
 ```bash
 mkdir -p ~/.ssh
@@ -96,7 +96,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ## 5. Verify SSH Login
 
-From the client (`node2`), test SSH login:
+From the client (`worker`), test SSH login:
 
 ```bash
 ssh vagrant@192.168.56.12
